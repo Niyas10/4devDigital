@@ -8,10 +8,10 @@ import { RoboAnimation } from "./robo-animation";
 
 export default function Hero() {
   return (
-    <div className="relative min-h-[calc(100vh-76px)] flex items-center">
+    <div className="relative h-[700px] flex items-center">
       {/* Floating papers background */}
       <div className="absolute inset-0 overflow-hidden">
-        <FloatingPaper count={6} />
+        <FloatingPaper count={7} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -22,10 +22,9 @@ export default function Hero() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-              Crafting Websites That Generates
+            Your vision, our
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
-                {" "}
-                Leads
+                {" "}creative expertise
               </span>
             </h1>
           </motion.div>
@@ -36,10 +35,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-gray-400 text-xl mb-8 max-w-2xl mx-auto"
           >
-            Is your website working hard enough for your business? Imagine
-            having a site that never sleeps, consistently turning visitors into
-            loyal clients.
-          </motion.p>
+We craft innovative websites and digital solutions.          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -47,11 +43,10 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.4 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
-          
             <Button
               size="lg"
               variant="outline"
-              className="text-white bg-purple-500/20  border-purple-500 hover:bg-purple-500/20"
+              className="text-white bg-purple-500/20 border-purple-500 hover:bg-purple-500/20"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               Book a Strategy Call

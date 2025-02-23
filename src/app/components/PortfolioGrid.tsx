@@ -7,46 +7,28 @@ import Image from "next/image"
 const projects = [
   {
     id: 1,
-    title: "Minimalist Brand Identity",
-    description: "Clean and modern visual communication for a tech startup",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    category: "Branding",
+    title: "Atropz Training Institute",
+    description: "Kerala top german language training center",
+    imageUrl: "/project/1.png",
+    category: "Websites",
+    link: "https://atropz.com",
   },
   {
     id: 2,
-    title: "Sleek Web Experience",
-    description: "Elegant online presence for a luxury fashion brand",
-    imageUrl: "/placeholder.svg?height=800&width=600",
-    category: "Web Design",
+    title: "Code Coders Web Compiler",
+    description: "Web Compiler with lots of patters qustions ",
+    imageUrl: "/project/2.png",
+    category: "Compiler",
+    link: "https://codecoders.in/",
   },
   {
     id: 3,
-    title: "Intuitive Mobile App",
-    description: "User-friendly app design for a health and wellness company",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    category: "Mobile App",
-  },
-  {
-    id: 4,
-    title: "Elegant Digital Campaign",
-    description: "Sophisticated marketing strategy for a luxury automotive brand",
-    imageUrl: "/placeholder.svg?height=800&width=600",
-    category: "Digital Marketing",
-  },
-  {
-    id: 5,
-    title: "Refined UI/UX Design",
-    description: "Streamlined user interfaces for a financial services platform",
-    imageUrl: "/placeholder.svg?height=600&width=800",
-    category: "UI/UX",
-  },
-  {
-    id: 6,
-    title: "Minimalist Product Design",
-    description: "Sleek and functional design for a smart home device",
-    imageUrl: "/placeholder.svg?height=800&width=600",
-    category: "Product Design",
-  },
+    title: "Concept Map",
+    description: "Social meadia application with e-commerce",
+    imageUrl: "/project/3.png",
+    category: "Websites",
+    link: "https://concept-map-seven.vercel.app/",
+  }
 ]
 
 const categories = ["All", ...new Set(projects.map((project) => project.category))]
@@ -54,10 +36,12 @@ const categories = ["All", ...new Set(projects.map((project) => project.category
 export default function PortfolioGrid() {
   const [filter, setFilter] = useState("All")
 
-  const filteredProjects = filter === "All" ? projects : projects.filter((project) => project.category === filter)
+  const filteredProjects = filter === "All" 
+    ? projects 
+    : projects.filter((project) => project.category === filter)
 
   return (
-    <section className="py-20">
+    <section className="py-20 from-background to-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
@@ -65,8 +49,8 @@ export default function PortfolioGrid() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl text-white">Our Work</h2>
-          <p className="mt-4 text-lg text-muted-foreground ">
+          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-4xl">Our Work</h2>
+          <p className="mt-4 text-lg text-gray-300">
             A showcase of our minimalist designs and creative solutions.
           </p>
         </motion.div>
@@ -76,10 +60,10 @@ export default function PortfolioGrid() {
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
                 filter === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  ? "bg-[#2E2E2E] text-white border-[1px] border-purple-500"
+                  : "bg-[#2E2E2E]/30 text-gray-300 hover:bg-[#2E2E2E]/50 border-2 border-transparent"
               }`}
             >
               {category}
@@ -97,41 +81,44 @@ export default function PortfolioGrid() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-background rounded-3xl shadow-lg overflow-hidden hover-lift transition-all duration-300 ease-in-out border-2 border-transparent hover:border-primary/10"
+                className="group rounded-3xl shadow-lg overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg border-2 border-[#2E2E2E]/50 hover:border-purple-500"
               >
                 <div className="relative h-64 overflow-hidden">
                   <Image
                     src={project.imageUrl || "/placeholder.svg"}
                     alt={project.title}
                     layout="fill"
-                    objectFit="cover"
-                    className="transition-transform duration-300 ease-in-out group-hover:scale-105"
+                    className="transition-transform duration-300 object-cover ease-in-out group-hover:scale-105"
                   />
                   <motion.div
-                    className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 transition-opacity duration-300"
-                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                   >
                     <p className="text-white text-center px-4">{project.description}</p>
                   </motion.div>
                 </div>
-                <div className="p-6">
-                  <div className="text-sm font-medium text-primary mb-1">{project.category}</div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{project.title}</h3>
+                <div className="p-6 bg-[#2E2E2E]/30 backdrop-blur-lg">
+                  <div className="text-sm font-medium text-transparent mb-1 bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{project.category}</div>
+                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
                   <a
-                    href="https://www.flowersandsaints.com.au"
+                    href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary hover:underline inline-flex items-center"
+                    className="text-primary hover:text-white transition-colors duration-300 inline-flex items-center group"
                   >
                     View Project
                     <svg
-                      className="w-4 h-4 ml-2"
+                      className="w-4 h-4 ml-2 transform transition-transform duration-300 group-hover:translate-x-1"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                      />
                     </svg>
                   </a>
                 </div>
@@ -143,4 +130,3 @@ export default function PortfolioGrid() {
     </section>
   )
 }
-

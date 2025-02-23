@@ -12,10 +12,9 @@ export default function WearYourStory() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-foreground mb-6">Wear Your Story</h2>
+          <h2 className="text-3xl text-white font-bold text-center mb-12 text-foreground">Your trusted partner for  digital success</h2>
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            Every piece from Flowers & Saints is a canvas for your unique narrative. Our designs blend minimal
-            aesthetics with nature's beauty, allowing you to express your individuality.
+          We are dedicated to helping your business succees in digital world by providing innovative solutions, personalized strategies.
           </p>
           <motion.div
             className="mt-10"

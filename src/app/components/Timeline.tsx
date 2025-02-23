@@ -1,180 +1,95 @@
 "use client"
 
-import { useState, useRef } from "react"
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion"
+import { useRef } from "react"
+import { motion, useInView } from "framer-motion"
 
-const timelineEvents = [
-  {
-    year: 2018,
-    title: "Flowers & Saints Founded",
-    description: "Our journey began with a passion for minimal design and floral artistry.",
-    details:
-      "Founded by Jane Doe and John Smith, Flowers & Saints started as a small studio in Sydney's Surry Hills, combining their love for minimalist design and botanical beauty.",
-  },
-  {
-    year: 2019,
-    title: "First Major Exhibition",
-    description: "Showcased our unique blend of digital art and floral arrangements at the Sydney Design Festival.",
-    details:
-      "Our exhibition 'Digital Bloom' attracted over 10,000 visitors and received critical acclaim for its innovative approach to merging technology with natural elements.",
-  },
-  {
-    year: 2020,
-    title: "Launch of Online Store",
-    description: "Expanded our reach by bringing our creations to the digital world.",
-    details:
-      "In response to global changes, we pivoted to e-commerce, offering our unique designs and virtual floral workshops to a worldwide audience.",
-  },
-  {
-    year: 2021,
-    title: "Collaboration with Top Brands",
-    description: "Partnered with leading lifestyle brands to create exclusive collections.",
-    details:
-      "Our collaborations included limited edition prints with Australian fashion label Zimmermann and a bespoke fragrance line with Aesop.",
-  },
-  {
-    year: 2022,
-    title: "International Recognition",
-    description: "Received the prestigious International Floral Design Award.",
-    details:
-      "Our 'Ethereal Echoes' installation, which combined holographic projections with live flowers, won the gold medal at the Chelsea Flower Show.",
-  },
-  {
-    year: 2023,
-    title: "Expansion to Physical Stores",
-    description: "Opened our first flagship store in the heart of Sydney.",
-    details:
-      "Our Bondi Beach location features an immersive retail experience, blending digital installations with a curated selection of floral arrangements and lifestyle products.",
-  },
-]
-
-const FlowerIcon = ({ progress }: { progress: number }) => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="w-6 h-6"
-    style={{ transform: `scale(${progress})` }}
-  >
-    <path
-      d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-    <path
-      d="M12 8C12 8 14 10 14 12C14 14 12 16 12 16C12 16 10 14 10 12C10 10 12 8 12 8Z"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-  </svg>
-)
-
-export default function Timeline() {
-  const [expandedEvent, setExpandedEvent] = useState<number | null>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  })
-
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
-
+export default function AboutSection() {
   return (
-    <section ref={containerRef} className="py-20  overflow-hidden">
+    <section className="py-20 from-background to-secondary/20 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-foreground sm:text-4xl text-white">Our Journey</h2>
-          <p className="mt-4 text-lg text-muted-foreground">The evolution of Flowers & Saints through the years</p>
+          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-4xl">About Us</h2>
+          <p className="mt-4 text-lg text-gray-300">
+            Creating exceptional digital experiences through innovation and expertise
+          </p>
         </motion.div>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <motion.div
-            className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-primary/20"
-            style={{ scaleY: scaleX }}
-          />
+      
 
-          {/* Flower icon */}
-          <motion.div
-            className="sticky top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 text-primary"
-            style={{ y: useTransform(scrollYProgress, [0, 1], [0, 100]) }}
-          >
-            <FlowerIcon progress={useTransform(scrollYProgress, [0, 1], [0.5, 1]) as any} />
-          </motion.div>
+        {/* Additional Content Section */}
+        <motion.div 
+          className="mt-24 grid grid-cols-1 lg:grid-cols-2 gap-12"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="p-8 bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg rounded-3xl border-[1px] border-purple-500">
+            <h3 className="text-2xl font-bold text-white mb-6">Our Story</h3>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                Founded in 2020, we embarked on a journey to revolutionize digital experiences. Our team of passionate creators and innovators came together with a shared vision: to blend cutting-edge technology with artistic excellence.
+              </p>
+              <p>
+                Through the years, we've grown from a small startup to a recognized leader in digital innovation, serving clients across the globe. Our commitment to excellence and user-centered design has remained unwavering.
+              </p>
+            </div>
+          </div>
 
-          {timelineEvents.map((event, index) => (
-            <TimelineEvent
-              key={event.year}
-              event={event}
-              index={index}
-              isExpanded={expandedEvent === index}
-              onToggle={() => setExpandedEvent(expandedEvent === index ? null : index)}
-            />
-          ))}
-        </div>
+          <div className="p-8 bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg rounded-3xl border-[1px] border-purple-500">
+            <h3 className="text-2xl font-bold text-white mb-6">Our Process</h3>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                We believe in a collaborative approach that puts our clients at the center of the creative process. Our methodology combines agile development practices with design thinking principles to deliver exceptional results.
+              </p>
+              <p>
+                Every project begins with deep research and understanding of our client's needs, followed by iterative design and development phases. This ensures we deliver solutions that not only look beautiful but drive real business results.
+              </p>
+            </div>
+          </div>
+
+          <div className="lg:col-span-2 p-8 bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg rounded-3xl border-[1px] border-purple-500">
+            <h3 className="text-2xl font-bold text-white mb-6">Our Commitment</h3>
+            <div className="space-y-4 text-gray-300">
+              <p>
+                At the heart of our organization lies a deep commitment to innovation and excellence. We continuously invest in emerging technologies and methodologies to ensure we remain at the forefront of digital innovation. Our team regularly participates in industry conferences, workshops, and training programs to enhance their skills and bring fresh perspectives to our projects.
+              </p>
+              <p>
+                We're proud to maintain long-term relationships with our clients, many of whom have been with us since our inception. This trust is built on our consistent delivery of high-quality solutions, transparent communication, and our genuine interest in our clients' success. Whether you're a startup looking to make your mark or an established enterprise seeking digital transformation, we're here to help you achieve your goals.
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
 }
 
-function TimelineEvent({
-  event,
-  index,
-  isExpanded,
-  onToggle,
-}: {
-  event: (typeof timelineEvents)[0]
-  index: number
-  isExpanded: boolean
-  onToggle: () => void
-}) {
+function AboutCard({ content, index }: { content: (typeof aboutContent)[0]; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, amount: 0.5 })
 
   return (
     <motion.div
       ref={ref}
-      className={`mb-8 flex justify-between items-center w-full ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      className="relative"
+      initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+      animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
     >
-      <div className="w-5/12" />
-      <div className="z-20">
-        <div className="flex items-center justify-center w-8 h-8 bg-primary rounded-full">
-          <div className="w-3 h-3 bg-background rounded-full" />
+      <div className="p-6 bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg rounded-3xl border-2 border-[#2E2E2E]/50 hover:border-primary/20 transition-all duration-300 group hover:scale-105">
+        <div className="relative">
+          <div className="text-4xl mb-4">{content.icon}</div>
+          <h3 className="text-xl font-semibold text-white mb-2">{content.title}</h3>
+          <p className="text-primary mb-3">{content.description}</p>
+          <p className="text-gray-300 text-sm">{content.details}</p>
         </div>
       </div>
-      <motion.div
-        className="w-5/12 cursor-pointer"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={onToggle}
-      >
-        <div className="p-4 bg-background rounded-lg shadow-md border border-primary/10">
-          <span className="font-bold text-primary">{event.year}</span>
-          <h3 className="text-lg font-semibold mb-1">{event.title}</h3>
-          <p className="text-muted-foreground">{event.description}</p>
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: isExpanded ? "auto" : 0, opacity: isExpanded ? 1 : 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <p className="mt-2 text-sm text-muted-foreground">{event.details}</p>
-          </motion.div>
-        </div>
-      </motion.div>
     </motion.div>
   )
 }
-

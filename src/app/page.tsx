@@ -1,5 +1,6 @@
 import ContactForm from "./components/ContactForm";
 import FeatureCarousel from "./components/FeatureCarousel";
+import Footer from "./components/Footer";
 import Hero from "./components/hero";
 import Marquee from "./components/Marque";
 import Navbar from "./components/navbar";
@@ -22,16 +23,18 @@ export default function Home() {
           particleColor="#FFFFFF"
         />
       </div>
-
       <div className="relative z-10">
         <Navbar />
         <Hero />
-        <WearYourStory />
+        {/* <WearYourStory />  */}
+
+        <Marquee />
         <FeatureCarousel />
         <PortfolioGrid />
         <Timeline />
-        <Marquee />
+  
         <ContactForm />
+        <Footer/>
       </div>
     </main>
   );

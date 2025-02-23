@@ -15,24 +15,18 @@ interface SparklesProps {
 
 export const SparklesCore = ({
   id = "tsparticles",
-  background = "transparent",
-  minSize = 0.6,
-  maxSize = 1.4,
-  particleDensity = 100,
-  className = "h-full w-full",
+  background = "black",
+  minSize = 1.5,
+  maxSize = 3.0,
+  particleDensity = 500,
+  className = "fixed inset-0 w-full h-full",
   particleColor = "#FFFFFF",
 }: SparklesProps) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const { x: mouseX, y: mouseY } = useMousePosition()
-  const [dimensions, setDimensions] = useState({ width: 1200, height: 800 })
 
   useEffect(() => {
     if (typeof window === "undefined") return
-
-    setDimensions({
-      width: window.innerWidth,
-      height: window.innerHeight,
-    })
 
     const canvas = canvasRef.current
     if (!canvas) return
@@ -43,8 +37,10 @@ export const SparklesCore = ({
     let particles: Particle[] = []
     let animationFrameId: number
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = document.documentElement.scrollHeight
+    }
 
     class Particle {
       x: number
@@ -70,7 +66,6 @@ export const SparklesCore = ({
         if (this.y > canvas.height) this.y = 0
         if (this.y < 0) this.y = canvas.height
 
-        // Mouse interaction
         const dx = mouseX.get() - this.x
         const dy = mouseY.get() - this.y
         const distance = Math.sqrt(dx * dx + dy * dy)
@@ -109,18 +104,12 @@ export const SparklesCore = ({
       animationFrameId = requestAnimationFrame(animate)
     }
 
+    resizeCanvas()
     init()
     animate()
 
     const handleResize = () => {
-      if (typeof window === "undefined") return
-
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
-      setDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      })
+      resizeCanvas()
       init()
     }
 
@@ -137,12 +126,7 @@ export const SparklesCore = ({
       ref={canvasRef}
       id={id}
       className={className}
-      style={{
-        background,
-        width: dimensions.width,
-        height: dimensions.height,
-      }}
+      style={{ background, position: "absolute", top: 0, left: 0, width: "100vw", height: "100%" }}
     />
   )
 }
-
