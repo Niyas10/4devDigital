@@ -8,10 +8,10 @@ import { RoboAnimation } from "./robo-animation";
 
 export default function Hero() {
   return (
-    <div className="relative h-[700px] flex items-center">
+    <div className="relative  h-[500px] md:h-[600px] lg:h-[700px] flex items-center">
       {/* Floating papers background */}
       <div className="absolute inset-0 overflow-hidden">
-        <FloatingPaper count={7} />
+        <FloatingPaper count={6} />
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
@@ -21,7 +21,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
+            <h1 className="text-[40px] md:text-[40px] lg:text-[60px] font-bold  text-white mb-6  leading-[40px]   lg:leading-[60px]">
             Your vision, our
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
                 {" "}creative expertise
@@ -33,7 +33,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-gray-400 text-xl mb-8 max-w-2xl mx-auto"
+            className="text-gray-400  mb-8 max-w-2xl mx-auto sm:text-[16px] md:text-[18px]"
           >
 We craft innovative websites and digital solutions.          </motion.p>
 
@@ -46,7 +46,7 @@ We craft innovative websites and digital solutions.          </motion.p>
             <Button
               size="lg"
               variant="outline"
-              className="text-white bg-purple-500/20 border-purple-500 hover:bg-purple-500/20"
+              className="text-white text-[14px] bg-purple-500/20 border-purple-500 hover:bg-purple-500/20"
             >
               <Sparkles className="mr-2 h-5 w-5" />
               Book a Strategy Call
@@ -56,7 +56,7 @@ We craft innovative websites and digital solutions.          </motion.p>
       </div>
 
       {/* Animated robot */}
-      <div className="absolute bottom-0 right-0 w-96 h-96">
+      <div className="absolute right-[40px]  md:right-[100px] lg:w-96 lg:h-96">
         <RoboAnimation />
       </div>
     </div>

@@ -65,13 +65,13 @@ const cardVariants = {
 
 export default function FeatureGrid() {
   return (
-    <div className="py-20 text-white from-background to-secondary/20  custom-nav-one">
+    <div className="py-[20px] md:pt-[50px]  lg:py-[80px] text-white from-background to-secondary/20  custom-nav-one">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.h2 
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="text-3xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
+          className="text-[30px] md:text-[40px] lg:text-[50px] font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600"
         >
           Why Choose Us
         </motion.h2>
@@ -90,8 +90,8 @@ export default function FeatureGrid() {
             >
               <div>
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-lg md:text-xl font-semibold mb-2 text-white">{feature.title}</h3>
-                <p className="text-base">{feature.description}</p>
+                <h3 className="sm:text-[18px] md:text-[20px] font-semibold mb-2 text-white">{feature.title}</h3>
+                <p className="text-[16px] ">{feature.description}</p>
               </div>
             </motion.div>
           ))}

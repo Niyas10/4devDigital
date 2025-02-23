@@ -41,7 +41,7 @@ export const SparklesCore = ({
       canvas.width = window.innerWidth
       canvas.height = document.documentElement.scrollHeight
     }
-
+    
     class Particle {
       x: number
       y: number

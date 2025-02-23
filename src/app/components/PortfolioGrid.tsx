@@ -41,7 +41,7 @@ export default function PortfolioGrid() {
     : projects.filter((project) => project.category === filter)
 
   return (
-    <section className="py-20 from-background to-secondary/20">
+    <section className="py-[20px] md:pt-[50px]  lg:py-[80px] from-background to-secondary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           className="text-center mb-12"
@@ -49,18 +49,18 @@ export default function PortfolioGrid() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-4xl">Our Work</h2>
-          <p className="mt-4 text-lg text-gray-300">
+          <h2 className="text-[30px] md:text-[40px] lg:text-[50px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-4xl">Our Work</h2>
+          <p className=" sm:text-[16px] md:text-[18px] text-gray-300">
             A showcase of our minimalist designs and creative solutions.
           </p>
         </motion.div>
 
-        <div className="flex justify-center space-x-4 mb-8">
+        <div className="flex justify-center   space-x-2 mb-8">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setFilter(category)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-colors duration-300 ${
+              className={`px-4 py-2    md:px-6 md:py-2 rounded-full text-[14px] md:text-[16px] font-medium transition-colors duration-300 ${
                 filter === category
                   ? "bg-[#2E2E2E] text-white border-[1px] border-purple-500"
                   : "bg-[#2E2E2E]/30 text-gray-300 hover:bg-[#2E2E2E]/50 border-2 border-transparent"

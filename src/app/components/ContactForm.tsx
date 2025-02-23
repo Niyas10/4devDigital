@@ -43,7 +43,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section className="py-20">
+    <section className=" py-[20px] md:pt-[50px]  lg:py-[80px]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -51,8 +51,8 @@ export default function ContactForm() {
           transition={{ duration: 0.8 }}
           className="text-center mb-12"
         >
-          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-4xl mb-4">Get in Touch</h2>
-          <p className="text-lg text-gray-300">
+          <h2 className="text-[30px] md:text-[40px] lg:text-[50px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 sm:text-4xl mb-4">Get in Touch</h2>
+          <p className="sm:text-[16px] md:text-[18px] text-gray-300">
             We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
           </p>
         </motion.div>
@@ -60,7 +60,7 @@ export default function ContactForm() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="p-8 bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg rounded-3xl border-[1px] border-purple-500"
+          className="p-[20px] md:p-[30px] bg-[#2E2E2E] bg-opacity-30 backdrop-blur-lg rounded-3xl border-[1px] border-purple-500"
         >
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-6 text-white">

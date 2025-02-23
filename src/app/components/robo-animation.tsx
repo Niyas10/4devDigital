@@ -30,7 +30,7 @@ export function RoboAnimation() {
               ease: "easeInOut",
             }}
           />
-          <Bot className="w-32 h-32 text-purple-500" />
+          <Bot className="  w-[40px] h-[40px] md:w-[80px] md:h-[80px]    lg:w-[120px] lg:h-[120px] text-purple-500" />
         </div>
       </motion.div>
     </div>

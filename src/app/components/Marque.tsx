@@ -37,17 +37,17 @@ export default function Marquee() {
         >
           {[...Array(4)].map((_, index) => (
             <div key={index} className="flex items-center space-x-12 mx-4">
-              <Code className="text-gray-400 w-20 h-20" />
-              <Globe className="text-gray-400  w-20 h-20" />
-              <Search className="text-gray-400  w-20 h-20" />
-              <Brush className="text-gray-400  w-20 h-20" />
-              <Layers className="text-gray-400  w-20 h-20" />
-              <ShoppingCart className="text-gray-400  w-20 h-20" />
-              <Database className="text-gray-400  w-20 h-20" />
-              <Server className="text-gray-400  w-20 h-20" />
-              <Terminal className="text-gray-400  w-20 h-20" />
+              <Code className="text-gray-400 h-10 w-10 md:w-20 md:h-20" />
+              <Globe className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <Search className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <Brush className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <Layers className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <ShoppingCart className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <Database className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <Server className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
+              <Terminal className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
               
-              <Cpu className="text-gray-400  w-20 h-20" />
+              <Cpu className="text-gray-400  h-10 w-10 md:w-20 md:h-20" />
             </div>
           ))}
         </motion.div>
