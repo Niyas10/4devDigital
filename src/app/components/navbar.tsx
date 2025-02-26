@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Bot, Menu, Sparkles, X } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,6 +9,15 @@ import type React from "react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("overflow-hidden");
+    } else {
+      document.body.classList.remove("overflow-hidden");
+    }
+    return () => document.body.classList.remove("overflow-hidden");
+  }, [isOpen]);
 
   return (
     <>
@@ -64,11 +73,16 @@ export default function Navbar() {
           animate={{ x: 0 }}
           exit={{ x: "100%" }}
           transition={{ type: "spring", stiffness: 100, damping: 15 }}
-          className="fixed top-0 right-0 w-64 h-full  backdrop-blur-lg p-6 shadow-lg z-50"
+          className="fixed top-0 right-0 w-64 h-full backdrop-blur-lg p-6 shadow-lg z-50"
         >
           <div className="flex justify-between items-center mb-6">
             <span className="text-white text-lg font-semibold">Menu</span>
-            <Button variant="ghost" size="icon" className="text-white" onClick={() => setIsOpen(false)}>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-white"
+              onClick={() => setIsOpen(false)}
+            >
               <X className="w-6 h-6" />
             </Button>
           </div>
@@ -86,22 +100,12 @@ export default function Navbar() {
 }
 
 function NavLink({ href, children, onClick }: { href: string; children: React.ReactNode; onClick?: () => void }) {
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      const yOffset = -80;
-      const y = targetElement.getBoundingClientRect().top + window.scrollY + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      if (onClick) onClick();
-    }
-  };
-
   return (
     <a
       href={href}
-      onClick={handleClick}
+      onClick={() => {
+        if (onClick) onClick();
+      }}
       className="text-gray-300 hover:text-white transition-colors relative group text-[14px]"
     >
       {children}
